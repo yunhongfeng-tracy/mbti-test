@@ -41,7 +41,12 @@ mbti_test_github/
 ├── index.html          # 主页面
 ├── styles.css          # 样式文件
 ├── script.js           # 逻辑脚本
-└── README.md           # 说明文档
+├── CHANGELOG.md        # 版本更新记录
+├── README.md           # 说明文档
+├── deploy.md           # 部署指南
+├── 404.html            # 错误页面
+├── CNAME               # 自定义域名配置
+└── .gitignore          # Git忽略配置
 ```
 
 ## MBTI类型说明
