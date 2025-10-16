@@ -366,13 +366,29 @@ class MBTITest {
         
         // 更新导航按钮状态
         document.getElementById('prev-btn').style.display = this.currentQuestion > 0 ? 'block' : 'none';
+        document.getElementById('next-btn').style.display = 'none'; // 隐藏下一题按钮，因为现在是自动跳转
         document.getElementById('next-btn').textContent = 
             this.currentQuestion === questions.length - 1 ? '查看结果' : '下一题';
+            
+        // 如果是最后一题，显示查看结果按钮
+        if (this.currentQuestion === questions.length - 1) {
+            document.getElementById('next-btn').style.display = 'block';
+        }
     }
 
     selectOption(optionIndex) {
         this.answers[this.currentQuestion] = optionIndex;
         this.displayQuestion();
+        
+        // 自动跳转到下一题（延迟0.5秒让用户看到选择效果）
+        setTimeout(() => {
+            if (this.currentQuestion < questions.length - 1) {
+                this.currentQuestion++;
+                this.displayQuestion();
+            } else {
+                this.calculateResult();
+            }
+        }, 500);
     }
 
     nextQuestion() {
